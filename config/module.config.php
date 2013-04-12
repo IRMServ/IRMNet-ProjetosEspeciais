@@ -14,14 +14,132 @@ return array(
             // of each "child" route
             'projetos-especiais' => array(
                 'type' => 'literal',
+                 'may_terminate' => true,
                 'options' => array(
                     'route' => '/projetos-especiais',
                     'defaults' => array(
-                       // '__NAMESPACE__' => 'ProjetosEspeciais\Controller',
+                        // '__NAMESPACE__' => 'ProjetosEspeciais\Controller',
                         'controller' => 'ProjetosEspeciais\Controller\Index',
                         'action' => 'index',
                     ),
                 ),
+                'child_routes' => array(
+                    'helpdesk' => array(
+                        'type' => 'segment',
+                        'options' => array(
+                            'route' => '/helpdesk',
+                            'defaults' => array(
+                                'controller' => 'ProjetosEspeciais\Controller\HelpDesk',
+                                'action' => 'index',
+                                'setor' => 2
+                            ),
+                        ),
+                        'may_terminate' => true,
+                        'child_routes' => array(
+                            'open' => array(
+                                'type' => 'Literal',
+                                'may_terminate' => true,
+                                'options' => array(
+                                    'route' => '/open',
+                                    'defaults' => array(
+                                        'action' => 'store',
+                                    ),
+                                ),
+                            ),
+                            'helpdesk-page' => array(
+                                'type' => 'Segment',
+                                'may_terminate' => true,
+                                'options' => array(
+                                    'route' => '/page[/:page]',
+                                    'constraints' => array(
+                                        'page' => '[0-9]+'
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'index',
+                                        'page' => 1
+                                    ),
+                                ),
+                            ),
+                               'indicadores' => array(
+                                'type' => 'Literal',
+                                'may_terminate' => true,
+                                'options' => array(
+                                    'route' => '/indicadores',
+                                    'defaults' => array(
+                                        'controller' => 'TI\Controller\HelpDesk',
+                                        'action' => 'indicadores',
+                                    ),
+                                ),
+                            ),
+                            'chamado' => array(
+                                'type' => 'Segment',
+                                'may_terminate' => true,
+                                'options' => array(
+                                    'route' => '/chamado/:chamado',
+                                    'constraints' => array(
+                                        'chamado' => '[0-9]+'
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'chamado',
+                                        'chamado' => 0
+                                    ),
+                                ),
+                                'child_routes' => array(
+                                    'avaliar-chamado' => array(
+                                        'type' => 'Literal',
+                                        'may_terminate' => true,
+                                        'options' => array(
+                                            'route' => '/avaliar',
+                                            'defaults' => array(
+                                                'action' => 'avaliar',
+                                            ),
+                                        ),
+                                    ),
+                                ),
+                            ),
+                            'fechar' => array(
+                                'type' => 'Segment',
+                                'may_terminate' => true,
+                                'options' => array(
+                                    'route' => '/fechar/chamado/:chamado',
+                                    'constraints' => array(
+                                        'chamado' => '[0-9]+'
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'close',
+                                        'chamado' => 0
+                                    ),
+                                ),
+                            ),
+                            'changeprioridade' => array(
+                                'type' => 'Literal',
+                                'may_terminate' => true,
+                                'options' => array(
+                                    'route' => '/changeprioridade',
+                                    'defaults' => array(
+                                        'controller' => 'ProjetosEspeciais\Controller\HelpDesk',
+                                        'action' => 'changeprioridade',
+                                    ),
+                                ),
+                            ),
+                            'chamado-resposta' => array(
+                                'type' => 'Segment',
+                                'may_terminate' => true,
+                                'options' => array(
+                                    'route' => '/chamado/:id/resposta',
+                                    'constraints' => array(
+                                        'id' => '[0-9]+'
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'resposta',
+                                        'id' => 0
+                                    ),
+                                ),
+                            ),
+                        )
+                    ),
+//                 
+                )
             ),
         ),
     ),
@@ -42,6 +160,7 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
+            'ProjetosEspeciais\Controller\Helpdesk' => 'ProjetosEspeciais\Controller\HelpdeskController',
             'ProjetosEspeciais\Controller\Index' => 'ProjetosEspeciais\Controller\IndexController'
         ),
     ),
