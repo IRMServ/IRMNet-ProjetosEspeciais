@@ -15,11 +15,7 @@ if ($this->messages):
 <div class="row-fluid">
   
     <div class="span3">
-        <ul class="nav nav-list">
-            <li class="nav-header">HelpDesk</li>
-            <li class="active"><a href="<?php echo $this->url('projetos-especiais/helpdesk');?>">Página principal</a></li>
-            <li class=""><a href="<?php echo $this->url('projetos-especiais/helpdesk/indicadores');?>">Indicadores</a></li>
-        </ul>
+         <?php include_once(__DIR__.'/../../menu.phtml');?>
        
     </div>
     <div class="span9">

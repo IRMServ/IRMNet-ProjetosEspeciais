@@ -1,9 +1,19 @@
-<?php
-$form = $this->form;
+<div class="row-fluid">
 
-$form->prepare();
+    <div class="span3">
+        <?php include_once(__DIR__ . '/../../menu.phtml'); ?>
 
-echo $this->form()->openTag($form);
-echo $this->formCollection($form);
-echo $this->form()->closeTag();
-?>
+    </div>
+    <div class="span9">
+        <?php
+        $form = $this->form;
+
+        $form->prepare();
+
+        echo $this->form()->openTag($form);
+        echo $this->formCollection($form);
+        echo $this->form()->closeTag();
+        ?>
+    </div>
+</div>
+
