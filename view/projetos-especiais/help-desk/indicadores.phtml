@@ -1,7 +1,7 @@
 <div class="row-fluid">
 
     <div class="span3">
-         <?php include_once(__DIR__.'/../../menu.phtml');?>
+        <?php include_once(__DIR__ . '/../../menu.phtml'); ?>
 
     </div>
     <div class="span9">        
@@ -21,21 +21,23 @@
         </table>
         <table class="table table-bordered">
             <thead>
-            <th>Chamado</th>
-            <th>Finalizado</th>
-            <th>Autor</th>
+                <tr>
+                    <th>Chamado</th>
+                    <th>Finalizado</th>
+                    <th>Autor</th>
+                </tr>
             </thead>
             <tbody>
-                <?php foreach($this->chamados as $chamado):?>
-                <tr>
-                    <td><a href="<?php echo $this->url('ti/helpdesk/chamado',array('chamado'=>$chamado->getIdchamado())); ?>"><?php echo $chamado->getTitulo(); ?></a></td>
-                    <td><?php echo $chamado->getDatafim(); ?></td>
-                    <td><?php echo $chamado->getAutor(); ?></td>
-                </tr>
-                 <?php endforeach;?>
-               
+                <?php foreach ($this->chamados as $chamado): ?>
+                    <tr>
+                        <td><a href="<?php echo $this->url('ti/helpdesk/chamado', array('chamado' => $chamado->getIdchamado())); ?>"><?php echo $chamado->getTitulo(); ?></a></td>
+                        <td><?php echo $chamado->getDatafim(); ?></td>
+                        <td><?php echo $chamado->getAutor(); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+
             </tbody>
         </table>
-        
+
     </div>
 </div>
