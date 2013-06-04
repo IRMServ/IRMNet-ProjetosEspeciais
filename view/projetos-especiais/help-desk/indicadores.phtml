@@ -3,41 +3,31 @@
     <div class="span3">
         <?php include_once(__DIR__ . '/../../menu.phtml'); ?>
 
+
     </div>
     <div class="span9">        
         <table class="table table-bordered">
             <thead>
-            <th>Total de chamados</th>
-            <th>Média total</th>
-            <th>Chamados não avaliados</th>
+                <tr>
+                    <th align="center" colspan="3">
+                        Estatística do último mês
+                    </th>
+                </tr>
+                <tr>
+                    <th>Total de chamados</th>
+                    <th>Média total</th>
+                    <th>Chamados abertos</th>
+                </tr>
             </thead>
             <tbody>
                 <tr>
                     <td><?php echo $this->total_chamados; ?></td>
                     <td><?php echo $this->media; ?></td>
-                    <td><?php echo $this->chamados_na; ?></td>
+                    <td><?php echo $this->chamados_abertos; ?></td>
                 </tr>
             </tbody>
         </table>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Chamado</th>
-                    <th>Finalizado</th>
-                    <th>Autor</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($this->chamados as $chamado): ?>
-                    <tr>
-                        <td><a href="<?php echo $this->url('ti/helpdesk/chamado', array('chamado' => $chamado->getIdchamado())); ?>"><?php echo $chamado->getTitulo(); ?></a></td>
-                        <td><?php echo $chamado->getDatafim(); ?></td>
-                        <td><?php echo $chamado->getAutor(); ?></td>
-                    </tr>
-                <?php endforeach; ?>
 
-            </tbody>
-        </table>
 
     </div>
 </div>

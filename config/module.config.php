@@ -1,5 +1,5 @@
 <?php
-
+namespace ProjetosEspeciais;
 /**
  * Zend Framework (http://framework.zend.com/)
  *
@@ -8,6 +8,16 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 return array(
+      'acl' => array(
+        'ProjetosEspeciais' => array(
+            'PROJETOS ESPECIAIS' => array(
+                'Almoxarifado\Controller\Index:index',              
+            ),
+            'TI' => array(
+                'Almoxarifado\Controller\Index:index',              
+            ),
+        )
+    ),
     'router' => array(
         'routes' => array(
             // This defines the hostname route which forms the base
@@ -46,6 +56,17 @@ return array(
                                     ),
                                 ),
                             ),
+                            'indicadores' => array(
+                                'type' => 'Literal',
+                                'may_terminate' => true,
+                                'options' => array(
+                                    'route' => '/indicadores',
+                                    'defaults' => array(
+                                       'setor' => 2,
+                                        'action' => 'indicadores',
+                                    ),
+                                ),
+                            ),
                             'helpdesk-page' => array(
                                 'type' => 'Segment',
                                 'may_terminate' => true,
@@ -60,17 +81,7 @@ return array(
                                     ),
                                 ),
                             ),
-                               'indicadores' => array(
-                                'type' => 'Literal',
-                                'may_terminate' => true,
-                                'options' => array(
-                                    'route' => '/indicadores',
-                                    'defaults' => array(
-                                        'controller' => 'TI\Controller\HelpDesk',
-                                        'action' => 'indicadores',
-                                    ),
-                                ),
-                            ),
+                               
                             'chamado' => array(
                                 'type' => 'Segment',
                                 'may_terminate' => true,
