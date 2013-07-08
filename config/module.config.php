@@ -8,13 +8,29 @@ namespace ProjetosEspeciais;
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 return array(
-      'acl' => array(
+    'acl' => array(
         'ProjetosEspeciais' => array(
             'PROJETOS ESPECIAIS' => array(
-                'Almoxarifado\Controller\Index:index',              
+                'ProjetosEspeciais\Controller\Index:index',
+                'ProjetosEspeciais\Controller\Helpdesk:index',
+                'ProjetosEspeciais\Controller\Helpdesk:chamado',
+                'ProjetosEspeciais\Controller\Helpdesk:resposta',
+                'ProjetosEspeciais\Controller\Helpdesk:store',
+                'ProjetosEspeciais\Controller\Helpdesk:close',
+                'ProjetosEspeciais\Controller\Helpdesk:changeprioridade',
+                'ProjetosEspeciais\Controller\Helpdesk:avaliar',
+                'ProjetosEspeciais\Controller\Helpdesk:indicadores',
             ),
             'TI' => array(
-                'Almoxarifado\Controller\Index:index',              
+                'ProjetosEspeciais\Controller\Index:index',
+                'ProjetosEspeciais\Controller\Helpdesk:index',
+                'ProjetosEspeciais\Controller\Helpdesk:chamado',
+                'ProjetosEspeciais\Controller\Helpdesk:resposta',
+                'ProjetosEspeciais\Controller\Helpdesk:store',
+                'ProjetosEspeciais\Controller\Helpdesk:close',
+                'ProjetosEspeciais\Controller\Helpdesk:changeprioridade',
+                'ProjetosEspeciais\Controller\Helpdesk:avaliar',
+                'ProjetosEspeciais\Controller\Helpdesk:indicadores',
             ),
         )
     ),
