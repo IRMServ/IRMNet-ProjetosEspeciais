@@ -373,7 +373,7 @@ class HelpDeskController extends AbstractActionController {
            
            $renderer = $this->getServiceLocator()->get('ViewRenderer');
 
-                $content = $renderer->render('projetos-especiais/index/email-resposta-chamado.phtml', array('setor' => $setor->getIdsetor(), 'sujeito' => $author['displayname'], 'chamado' => $chamado->getIdchamado(), 'titulo' => $chamado->getTitulo(), 'conteudo' => $chamado->getDescricao()));
+                $content = $renderer->render('projetos-especiais/index/email-resposta-chamado.phtml',array('setor' => $setor->getIdsetor(), 'sujeito' => $store['displayname'], 'chamado' => $chamado->getIdchamado(), 'titulo' => $chamado->getTitulo()));
                 $mimehtml = new MimeType($content);
 
                 $message = new Message();
