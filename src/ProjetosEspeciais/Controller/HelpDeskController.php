@@ -183,7 +183,7 @@ class HelpDeskController extends AbstractActionController {
                 $this->getEntityManager()->flush();
 
                
-                $mail = new MailsERVICE($this->getServiceLocator());
+                $mail = new MailsERVICE($this->getServiceLocator(),ServiceTemplate::HELPDESK_ABERTURA);
                 $mail->addFrom('webmaster@irmserv.com.br')
                         ->addTo($store['email'])
                         ->addCc($setor->getEmail())
